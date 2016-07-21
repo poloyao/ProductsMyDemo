@@ -1,0 +1,91 @@
+﻿<dxr:DXRibbonWindow xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"  xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxnt="http://schemas.devexpress.com/winfx/2008/xaml/navbar/themekeys"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductsMyDemo"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        DataContext="{dxmvvm:ViewModelSource Type=local:MainWindowViewModel}"
+        xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" x:Class="ProductsMyDemo.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <dxr:DXRibbonWindow.Resources>
+        <Style x:Key="{dxnt:NavigationPaneThemeKey ResourceKey=ButtonGroupControlStyle, IsThemeIndependent=True}" TargetType="dxn:NavPaneGroupButtonPanelControl">
+            <Setter Property="ItemsPanel" Value="{DynamicResource {dxnt:NavigationPaneThemeKey ResourceKey=ButtonGroupControlItemsPanel}}" />
+            <Setter Property="Height" Value="0" />
+        </Style>
+    </dxr:DXRibbonWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <dxdo:DockLayoutManager Grid.Row="1">
+            <dxdo:LayoutGroup>
+                <dxdo:LayoutPanel Caption="菜单" ShowCaption="False" Name="layoutPanel" ItemWidth="Auto" AllowClose="False"  MaxWidth="100" >
+                    <dxn:NavBarControl ItemsSource="{Binding ModuleGroups}">
+                        <dxn:NavBarControl.ItemStyle>
+                            <Style TargetType="dxn:NavBarGroup">
+                                <Setter Property="Header" Value="{Binding Path=Title}"/>
+                                <Setter Property="ItemsSource" Value="{Binding Path=ModuleInfos}"  />
+                                <Setter Property="ItemStyle">
+                                    <Setter.Value>
+                                        <Style TargetType="dxn:NavBarItem">
+                                            <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Setter Property="Content" Value="{Binding Path=Title}" />
+                                            <Setter Property="ImageSource" Value="{Binding Path=Icon}" />
+                                            <Setter Property="Command" Value="{Binding Path=ShowCommand}" />
+                                            <Setter Property="ImageSettings">
+                                                <Setter.Value>
+                                                    <dxn:ImageSettings Width="32" Height="32" Stretch="Uniform" StretchDirection="Both" />
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="LayoutSettings">
+                                                <Setter.Value>
+                                                    <dxn:LayoutSettings ImageDocking="Top" ImageHorizontalAlignment="Center" TextHorizontalAlignment="Center" ImageVerticalAlignment="Center" TextVerticalAlignment="Center" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </dxn:NavBarControl.ItemStyle>
+                        <dxn:NavBarControl.View>
+                            <dxn:NavigationPaneView x:Name="navPanelView" IsOverflowPanelVisible="False" IsSplitterVisible="False" NavPaneExpandedChanged="NavigationPaneView_NavPaneExpandedChanged" NavPaneExpandedChanging="NavigationPaneView_NavPaneExpandedChanging"/>
+                        </dxn:NavBarControl.View>
+                    </dxn:NavBarControl>
+                </dxdo:LayoutPanel>
+                <dxdo:LayoutPanel AllowClose="False" AllowFloat="False" AllowHide="False" ShowCaption="False" ShowCloseButton="False">
+                    <dxwui:NavigationFrame x:Name="documentFrame" Navigating="NavigationFrame_Navigating" Navigated="NavigationFrame_Navigated">
+                        <dxwui:NavigationFrame.Resources>
+                            <Style TargetType="dxwui:PageAdornerControl">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="dxwui:PageAdornerControl">
+                                            <ContentPresenter Content="{TemplateBinding Content}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </dxwui:NavigationFrame.Resources>
+                        
+                    </dxwui:NavigationFrame>
+                </dxdo:LayoutPanel>
+            </dxdo:LayoutGroup>
+            
+        </dxdo:DockLayoutManager>
+        <!--底部工具栏-->
+        <dxr:RibbonStatusBarControl x:Name="statusBar" Grid.Row="2">
+            <dxr:RibbonStatusBarControl.RightItemLinks>
+                <dxb:BarCheckItemLink BarItemName="layoutNormal"/>
+                <dxb:BarCheckItemLink BarItemName="layoutReading"/>
+            </dxr:RibbonStatusBarControl.RightItemLinks>
+        </dxr:RibbonStatusBarControl>
+
+    </Grid>
+</dxr:DXRibbonWindow>
