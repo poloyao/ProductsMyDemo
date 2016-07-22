@@ -25,7 +25,7 @@ namespace ProductsMyDemo
             SplashScreenType = typeof(SplashScreenWindow);
             List<ModuleInfo> modules = new List<ModuleInfo>() {
                 ViewModelSource.Create(() => new ModuleInfo("GridTasksModule", this, "合同管理")).SetIcon("GridTasks"),
-                ViewModelSource.Create(() => new ModuleInfo("lalaa", this, "项目放款")).SetIcon("GridContacts"),
+                ViewModelSource.Create(() => new ModuleInfo("Contract", this, "项目放款")).SetIcon("GridContacts"),
                 ViewModelSource.Create(() => new ModuleInfo("SpreadsheetModule", this, "追/代偿")).SetIcon("Spreadsheet"),
                 ViewModelSource.Create(() => new ModuleInfo("RichEditModule", this, "保费管理")).SetIcon("WordProcessing"),
                 ViewModelSource.Create(() => new ModuleInfo("ReportsModule", this, "设置")).SetIcon("BandedReports")
@@ -54,17 +54,18 @@ namespace ProductsMyDemo
         protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
         [Required]
         protected virtual IApplicationJumpListService ApplicationJumpListService { get { return null; } }
+
         [Required]
         protected virtual INavigationService NavigationService { get { return null; } }
         protected virtual void OnSelectedModuleInfoChanged()
         {
-            PrintingService.PreviewModelAction = null;
+            //PrintingService.PreviewModelAction = null;
         }
         protected virtual void OnIsBackstageOpenChanged()
         {
-            HasPrinting = PrintingService.HasPrinting;
-            if (!HasPrinting && DefaultBackstatgeIndex == 1)
-                DefaultBackstatgeIndex = 0;
+            //HasPrinting = PrintingService.HasPrinting;
+            //if (!HasPrinting && DefaultBackstatgeIndex == 1)
+            //    DefaultBackstatgeIndex = 0;
         }
 
         BitmapImage NewTaskIcon
