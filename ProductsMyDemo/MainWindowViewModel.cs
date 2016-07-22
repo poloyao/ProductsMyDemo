@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media.Imaging;
+using DevExpress.Images;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using DevExpress.Mvvm.POCO;
 using DevExpress.Mvvm.UI;
 using DevExpress.Utils;
+using System.ComponentModel.DataAnnotations;
+using ProductsMyDemo.VM;
 using ProductsMyDemo.Loading;
+using System.Threading.Tasks;
+using ProductsMyDemo.Controls;
+using ProductsMyDemo.SplashScreens;
 
 namespace ProductsMyDemo
 {
@@ -16,9 +22,10 @@ namespace ProductsMyDemo
     {
         public MainWindowViewModel()
         {
+            SplashScreenType = typeof(SplashScreenWindow);
             List<ModuleInfo> modules = new List<ModuleInfo>() {
                 ViewModelSource.Create(() => new ModuleInfo("GridTasksModule", this, "合同管理")).SetIcon("GridTasks"),
-                ViewModelSource.Create(() => new ModuleInfo("GridContactsModule", this, "项目放款")).SetIcon("GridContacts"),
+                ViewModelSource.Create(() => new ModuleInfo("lalaa", this, "项目放款")).SetIcon("GridContacts"),
                 ViewModelSource.Create(() => new ModuleInfo("SpreadsheetModule", this, "追/代偿")).SetIcon("Spreadsheet"),
                 ViewModelSource.Create(() => new ModuleInfo("RichEditModule", this, "保费管理")).SetIcon("WordProcessing"),
                 ViewModelSource.Create(() => new ModuleInfo("ReportsModule", this, "设置")).SetIcon("BandedReports")
@@ -39,11 +46,38 @@ namespace ProductsMyDemo
         /// 加载过场界面
         /// </summary>
         public virtual Type SplashScreenType { get; set; }
+        public virtual int DefaultBackstatgeIndex { get; set; }
+        public virtual bool HasPrinting { get; set; }
+        public virtual bool IsBackstageOpen { get; set; }
 
-        protected virtual INavigationService NavigationService { get { return null; } }
-
+        [Required]
+        protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
+        [Required]
         protected virtual IApplicationJumpListService ApplicationJumpListService { get { return null; } }
+        [Required]
+        protected virtual INavigationService NavigationService { get { return null; } }
+        protected virtual void OnSelectedModuleInfoChanged()
+        {
+            PrintingService.PreviewModelAction = null;
+        }
+        protected virtual void OnIsBackstageOpenChanged()
+        {
+            HasPrinting = PrintingService.HasPrinting;
+            if (!HasPrinting && DefaultBackstatgeIndex == 1)
+                DefaultBackstatgeIndex = 0;
+        }
 
+        BitmapImage NewTaskIcon
+        {
+            get { return new BitmapImage(AssemblyHelper.GetResourceUri(typeof(DXImages).Assembly, "Images/Analytics.png")); }
+        }
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        public void Exit()
+        {
+            CurrentWindowService.Close();
+        }
         /// <summary>
         /// 模块初始化
         /// </summary>
@@ -58,8 +92,29 @@ namespace ProductsMyDemo
 
             SplashScreenType = typeof(ProgressWindow);
             //ApplicationJumpListService.Items.AddOrReplace("")
-
+            //ApplicationJumpListService.Items.AddOrReplace("New Task", NewTaskIcon, ShowGridTasksModuleNewItemWindow);
+            //ApplicationJumpListService.Apply();
         }
+
+        /// <summary>
+        /// 注入界面
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="moduleType"></param>
+        void ShowGridModuleNewItemWindow<T>(string moduleType) where T : class {
+            if (Application.Current.Windows.Count != 1)
+                return;
+            GridViewModelBase<T> viewModel = ViewHelper.GetViewModelFromView(NavigationService.Current) as GridViewModelBase<T>;
+            if (viewModel != null)
+                viewModel.ShowNewItemWindow();
+            else
+                ModuleGroups.SelectMany(g => g.ModuleInfos).Where(m => m.Type == moduleType).First().Show(GridModuleNavigationParameter.NewItem);
+        }
+        void ShowGridTasksModuleNewItemWindow()
+        {
+            ShowGridModuleNewItemWindow<Task>("GridTasksModule");
+        }
+
 
 
         public class ModuleGroup

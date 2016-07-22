@@ -25,6 +25,10 @@ namespace ProductsMyDemo
         public MainWindow()
         {
             InitializeComponent();
+            if (Height > SystemParameters.VirtualScreenHeight || Width > SystemParameters.VirtualScreenWidth)
+                WindowState = WindowState.Maximized;
+            DevExpress.Utils.About.UAlgo.Default.DoEventObject(DevExpress.Utils.About.UAlgo.kDemo, DevExpress.Utils.About.UAlgo.pWPF, this);
+
         }
 
         private void NavigationPaneView_NavPaneExpandedChanged(object sender, DevExpress.Xpf.NavBar.NavPaneExpandedChangedEventArgs e)
@@ -54,8 +58,8 @@ namespace ProductsMyDemo
             FrameworkElement newContent = (FrameworkElement)e.Content;
             if (newContent != null)
             {
-               // RibbonMergingHelper.SetMergeWith(newContent, ribbon);
-               // RibbonMergingHelper.SetMergeStatusBarWith(newContent, statusBar);
+                //RibbonMergingHelper.SetMergeWith(newContent, ribbon);
+                RibbonMergingHelper.SetMergeStatusBarWith(newContent, statusBar);
             }
         }
     }

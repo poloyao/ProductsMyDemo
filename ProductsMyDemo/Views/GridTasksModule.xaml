@@ -14,7 +14,7 @@
             <!--查询器-->
             <dxg:TableView x:Key="view" ShowSearchPanelMode="Always" AllowPerPixelScrolling="True" CellValueChanging="TableView_CellValueChanging" ShowGroupPanel="False" AutoWidth="True" AllowConditionalFormattingMenu="True"  SearchPanelNullText="请输入查询内容">
                 <dxg:TableView.FormatConditions>
-                    <!--判断显示模式-->
+                    <!--判断列表显示模式-->
                     <dxg:FormatCondition Expression="[Overdue]" PredefinedFormatName="RedText"/>
                     <dxg:FormatCondition Expression="(Not [Complete]) And ([Priority]='High')" PredefinedFormatName="BoldText"/>
                     <dxg:FormatCondition Expression="([Status]='Completed') Or ([Status]='Deferred')">

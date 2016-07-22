@@ -13,31 +13,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProductsMyDemo.Loading
+namespace ProductsMyDemo.SplashScreens
 {
     /// <summary>
-    /// ProgressWindow.xaml 的交互逻辑
+    /// SplashScreenWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ProgressWindow : Window, ISplashScreen
+    public partial class SplashScreenWindow : Window,ISplashScreen
     {
-        public ProgressWindow()
+        public SplashScreenWindow()
         {
+            Copyright = AssemblyInfo.AssemblyCopyright;
             InitializeComponent();
             this.board.Completed += OnAnimationCompleted;
         }
 
+        public string Copyright { get; set; }
+
+        #region ISplashScreen
+        void ISplashScreen.Progress(double value)
+        {
+            progressBar.Value = value;
+        }
         void ISplashScreen.CloseSplashScreen()
         {
             this.board.Begin(this);
         }
-
-        void ISplashScreen.Progress(double value)
-        {
-        }
-
         void ISplashScreen.SetProgressState(bool isIndeterminate)
         {
+            progressBar.IsIndeterminate = isIndeterminate;
         }
+        #endregion
+
         #region Event Handlers
         void OnAnimationCompleted(object sender, EventArgs e)
         {
@@ -47,3 +53,4 @@ namespace ProductsMyDemo.Loading
         #endregion
     }
 }
+
