@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/WaranteeDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/WaranteeDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="WaranteeDataObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WaranteeDataObject" nillable="true" type="tns:WaranteeDataObject" />
+</xs:schema>

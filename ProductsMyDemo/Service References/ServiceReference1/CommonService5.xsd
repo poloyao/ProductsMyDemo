@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd2" namespace="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd4" namespace="http://www.ByteartRetail.com/CommonStatusDataObject.xsd" />
+  <xs:element name="GetCommonCodes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommonCodesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="GetCommonCodesResult" nillable="true" type="q1:CommonCodeDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatCommonCodes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="commonCodeDataObjects" nillable="true" type="q2:CommonCodeDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatCommonCodesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="CreatCommonCodesResult" nillable="true" type="q3:CommonCodeDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommonCodesByCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://www.ByteartRetail.com/CommonStatusDataObject.xsd" minOccurs="0" name="Category" type="q4:CommonStatusDataObject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommonCodesByCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="GetCommonCodesByCategoryResult" nillable="true" type="q5:CommonCodeDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

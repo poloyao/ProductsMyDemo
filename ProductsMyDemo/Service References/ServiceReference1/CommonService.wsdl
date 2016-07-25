@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CommonService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd2" namespace="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd3" namespace="http://www.ByteartRetail.com/CommonCodeDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd4" namespace="http://www.ByteartRetail.com/CommonStatusDataObject.xsd" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICommonService_GetCommonCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommonCodes" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_GetCommonCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommonCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_GetCommonCodes_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q1:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_CreatCommonCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatCommonCodes" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_CreatCommonCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatCommonCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_CreatCommonCodes_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q2:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_GetCommonCodesByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommonCodesByCategory" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_GetCommonCodesByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommonCodesByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_GetCommonCodesByCategory_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q3:FaultData" />
+  </wsdl:message>
+  <wsdl:portType name="ICommonService">
+    <wsdl:operation name="GetCommonCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonService/GetCommonCodes" message="tns:ICommonService_GetCommonCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonService/GetCommonCodesResponse" message="tns:ICommonService_GetCommonCodes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICommonService/GetCommonCodesFaultDataFault" name="FaultDataFault" message="tns:ICommonService_GetCommonCodes_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatCommonCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonService/CreatCommonCodes" message="tns:ICommonService_CreatCommonCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonService/CreatCommonCodesResponse" message="tns:ICommonService_CreatCommonCodes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICommonService/CreatCommonCodesFaultDataFault" name="FaultDataFault" message="tns:ICommonService_CreatCommonCodes_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommonCodesByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonService/GetCommonCodesByCategory" message="tns:ICommonService_GetCommonCodesByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonService/GetCommonCodesByCategoryResponse" message="tns:ICommonService_GetCommonCodesByCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICommonService/GetCommonCodesByCategoryFaultDataFault" name="FaultDataFault" message="tns:ICommonService_GetCommonCodesByCategory_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICommonService" type="tns:ICommonService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCommonCodes">
+      <soap:operation soapAction="http://tempuri.org/ICommonService/GetCommonCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreatCommonCodes">
+      <soap:operation soapAction="http://tempuri.org/ICommonService/CreatCommonCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommonCodesByCategory">
+      <soap:operation soapAction="http://tempuri.org/ICommonService/GetCommonCodesByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CommonService">
+    <wsdl:port name="BasicHttpBinding_ICommonService" binding="tns:BasicHttpBinding_ICommonService">
+      <soap:address location="http://192.168.1.201:8000/CommonService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

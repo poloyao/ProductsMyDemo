@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/LoanDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/LoanDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd7" namespace="http://www.ByteartRetail.com/CommonCodeDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd9" namespace="http://www.ByteartRetail.com/LoanConfirmationStatusDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd10" namespace="http://www.ByteartRetail.com/RelieveStatusDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd2" namespace="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" />
+  <xs:complexType name="LoanDataObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplyLoanAmount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ContractNumber" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://www.ByteartRetail.com/CommonCodeDataObject.xsd" minOccurs="0" name="Direction" nillable="true" type="q1:CommonCodeDataObject" />
+      <xs:element xmlns:q2="http://www.ByteartRetail.com/LoanConfirmationStatusDataObject.xsd" minOccurs="0" name="LoanConfirmationStatus" nillable="true" type="q2:LoanConfirmationStatusDataObject" />
+      <xs:element xmlns:q3="http://www.ByteartRetail.com/RelieveStatusDataObject.xsd" minOccurs="0" name="RelieveStatus" nillable="true" type="q3:RelieveStatusDataObject" />
+      <xs:element xmlns:q4="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="LoanConfirmations" nillable="true" type="q4:LoanConfirmationDataObjectList" />
+      <xs:element xmlns:q5="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="LoanRelieves" nillable="true" type="q5:LoanRelieveDataObjectList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoanDataObject" nillable="true" type="tns:LoanDataObject" />
+</xs:schema>

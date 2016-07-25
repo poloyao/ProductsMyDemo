@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd2" namespace="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd3" namespace="http://www.ByteartRetail.com/ProjectDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd14" namespace="http://www.ByteartRetail.com/QuerySpec.xsd" />
+  <xs:element name="CreatProjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="projectDataObjects" nillable="true" type="q1:ProjectDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatProjectsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="CreatProjectsResult" nillable="true" type="q2:ProjectDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="projectDataObjects" nillable="true" type="q3:ProjectDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProjectsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="UpdateProjectsResult" nillable="true" type="q4:ProjectDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByKey">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="id" type="q5:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByKeyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://www.ByteartRetail.com/ProjectDataObject.xsd" minOccurs="0" name="GetProjectByKeyResult" nillable="true" type="q6:ProjectDataObject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByProjectNo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectNo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByProjectNoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://www.ByteartRetail.com/ProjectDataObject.xsd" minOccurs="0" name="GetProjectByProjectNoResult" nillable="true" type="q7:ProjectDataObject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="count" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="GetProjectsResult" nillable="true" type="q8:ProjectDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectsByWaranteeName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WaranteeName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectsByWaranteeNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="GetProjectsByWaranteeNameResult" nillable="true" type="q9:ProjectDataObjectList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByContractNo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="contractNo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectByContractNoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://www.ByteartRetail.com/ProjectDataObject.xsd" minOccurs="0" name="GetProjectByContractNoResult" nillable="true" type="q10:ProjectDataObject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectsWithPagination">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://www.ByteartRetail.com/QuerySpec.xsd" minOccurs="0" name="pagination" nillable="true" type="q11:Pagination" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectsWithPaginationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="GetProjectsWithPaginationResult" nillable="true" type="q12:ProjectDataObjectListWithPagination" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

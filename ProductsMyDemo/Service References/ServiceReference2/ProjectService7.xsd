@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/ProjectDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/ProjectDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd4" namespace="http://www.ByteartRetail.com/ContractDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd5" namespace="http://www.ByteartRetail.com/WaranteeDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd2" namespace="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" />
+  <xs:complexType name="ProjectDataObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProjectNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActorsName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://www.ByteartRetail.com/ContractDataObject.xsd" minOccurs="0" name="Contract" nillable="true" type="q1:ContractDataObject" />
+      <xs:element xmlns:q2="http://www.ByteartRetail.com/WaranteeDataObject.xsd" minOccurs="0" name="Warantee" nillable="true" type="q2:WaranteeDataObject" />
+      <xs:element xmlns:q3="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" minOccurs="0" name="Loans" nillable="true" type="q3:LoanDataObjectList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectDataObject" nillable="true" type="tns:ProjectDataObject" />
+</xs:schema>

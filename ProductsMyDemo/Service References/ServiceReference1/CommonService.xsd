@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd3" namespace="http://www.ByteartRetail.com/CommonCodeDataObject.xsd" />
+  <xs:complexType name="CommonCodeDataObjectList">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://www.ByteartRetail.com/CommonCodeDataObject.xsd" minOccurs="0" maxOccurs="unbounded" name="CommonCodeDataObject" nillable="true" type="q1:CommonCodeDataObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommonCodeDataObjectList" nillable="true" type="tns:CommonCodeDataObjectList" />
+</xs:schema>

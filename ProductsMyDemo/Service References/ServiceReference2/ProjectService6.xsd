@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd3" namespace="http://www.ByteartRetail.com/ProjectDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd6" namespace="http://www.ByteartRetail.com/LoanDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd11" namespace="http://www.ByteartRetail.com/LoanConfirmationDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd12" namespace="http://www.ByteartRetail.com/LoanRelieveDataObject.xsd" />
+  <xs:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd14" namespace="http://www.ByteartRetail.com/QuerySpec.xsd" />
+  <xs:complexType name="ProjectDataObjectList">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://www.ByteartRetail.com/ProjectDataObject.xsd" minOccurs="0" maxOccurs="unbounded" name="ProjectDataObject" nillable="true" type="q1:ProjectDataObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectDataObjectList" nillable="true" type="tns:ProjectDataObjectList" />
+  <xs:complexType name="LoanDataObjectList">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://www.ByteartRetail.com/LoanDataObject.xsd" minOccurs="0" maxOccurs="unbounded" name="LoanDataObject" nillable="true" type="q2:LoanDataObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoanDataObjectList" nillable="true" type="tns:LoanDataObjectList" />
+  <xs:complexType name="LoanConfirmationDataObjectList">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://www.ByteartRetail.com/LoanConfirmationDataObject.xsd" minOccurs="0" maxOccurs="unbounded" name="LoanConfirmationDataObject" nillable="true" type="q3:LoanConfirmationDataObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoanConfirmationDataObjectList" nillable="true" type="tns:LoanConfirmationDataObjectList" />
+  <xs:complexType name="LoanRelieveDataObjectList">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://www.ByteartRetail.com/LoanRelieveDataObject.xsd" minOccurs="0" maxOccurs="unbounded" name="LoanRelieveDataObject" nillable="true" type="q4:LoanRelieveDataObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoanRelieveDataObjectList" nillable="true" type="tns:LoanRelieveDataObjectList" />
+  <xs:complexType name="ProjectDataObjectListWithPagination">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://www.ByteartRetail.com/QuerySpec.xsd" minOccurs="0" name="Pagination" nillable="true" type="q5:Pagination" />
+      <xs:element minOccurs="0" name="ProjectDataObjectList" nillable="true" type="tns:ProjectDataObjectList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectDataObjectListWithPagination" nillable="true" type="tns:ProjectDataObjectListWithPagination" />
+</xs:schema>

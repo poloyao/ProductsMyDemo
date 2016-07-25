@@ -24,7 +24,7 @@ namespace ProductsMyDemo
         {
             SplashScreenType = typeof(SplashScreenWindow);
             List<ModuleInfo> modules = new List<ModuleInfo>() {
-                ViewModelSource.Create(() => new ModuleInfo("GridTasksModule", this, "合同管理")).SetIcon("GridTasks"),
+                ViewModelSource.Create(() => new ModuleInfo("ProjectView", this, "合同管理")).SetIcon("GridTasks"),
                 ViewModelSource.Create(() => new ModuleInfo("Contract", this, "项目放款")).SetIcon("GridContacts"),
                 ViewModelSource.Create(() => new ModuleInfo("SpreadsheetModule", this, "追/代偿")).SetIcon("Spreadsheet"),
                 ViewModelSource.Create(() => new ModuleInfo("RichEditModule", this, "保费管理")).SetIcon("WordProcessing"),
@@ -102,7 +102,8 @@ namespace ProductsMyDemo
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="moduleType"></param>
-        void ShowGridModuleNewItemWindow<T>(string moduleType) where T : class {
+        void ShowGridModuleNewItemWindow<T>(string moduleType) where T : class
+        {
             if (Application.Current.Windows.Count != 1)
                 return;
             GridViewModelBase<T> viewModel = ViewHelper.GetViewModelFromView(NavigationService.Current) as GridViewModelBase<T>;
@@ -154,8 +155,17 @@ namespace ProductsMyDemo
             /// <param name="parameter"></param>
             public void Show(object parameter = null)
             {
-                INavigationService navigationService = parent.ServiceContainer.GetRequiredService<INavigationService>();
-                navigationService.Navigate(Type, parameter, parent);
+                try
+                {
+                    INavigationService navigationService = parent.ServiceContainer.GetRequiredService<INavigationService>();
+                    navigationService.Navigate(Type, parameter, parent);
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("error!~");
+                }
+
             }
         }
     }

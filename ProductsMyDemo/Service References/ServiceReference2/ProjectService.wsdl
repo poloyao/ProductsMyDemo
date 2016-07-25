@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.ByteartRetail.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ByteartRetail.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.ByteartRetail.com/Imports">
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd0" namespace="http://www.ByteartRetail.com" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd2" namespace="http://www.ByteartRetail.com/CollectionDataObjectList.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd3" namespace="http://www.ByteartRetail.com/ProjectDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd4" namespace="http://www.ByteartRetail.com/ContractDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd5" namespace="http://www.ByteartRetail.com/WaranteeDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd6" namespace="http://www.ByteartRetail.com/LoanDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd7" namespace="http://www.ByteartRetail.com/CommonCodeDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd8" namespace="http://www.ByteartRetail.com/CommonStatusDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd9" namespace="http://www.ByteartRetail.com/LoanConfirmationStatusDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd10" namespace="http://www.ByteartRetail.com/RelieveStatusDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd11" namespace="http://www.ByteartRetail.com/LoanConfirmationDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd12" namespace="http://www.ByteartRetail.com/LoanRelieveDataObject.xsd" />
+      <xsd:import schemaLocation="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd14" namespace="http://www.ByteartRetail.com/QuerySpec.xsd" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProjectService_CreatProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatProjects" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_CreatProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_CreatProjects_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q1:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_UpdateProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProjects" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_UpdateProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_UpdateProjects_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q2:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByKey" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByKey_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q3:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByProjectNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByProjectNo" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByProjectNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByProjectNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByProjectNo_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q4:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjects_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q5:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectsByWaranteeName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsByWaranteeName" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectsByWaranteeName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsByWaranteeNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectsByWaranteeName_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q6:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByContractNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByContractNo" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByContractNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByContractNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectByContractNo_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q7:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectsWithPagination_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsWithPagination" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectsWithPagination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsWithPaginationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_GetProjectsWithPagination_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/LAFAFGS.DataObjects" name="detail" element="q8:FaultData" />
+  </wsdl:message>
+  <wsdl:portType name="IProjectService">
+    <wsdl:operation name="CreatProjects">
+      <wsdl:input wsaw:Action="http://www.ByteartRetail.com/IProjectService/CreatProjects" message="tns:IProjectService_CreatProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ByteartRetail.com/IProjectService/CreatProjectsResponse" message="tns:IProjectService_CreatProjects_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ByteartRetail.com/IProjectService/CreatProjectsFaultDataFault" name="FaultDataFault" message="tns:IProjectService_CreatProjects_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjects">
+      <wsdl:input wsaw:Action="http://www.ByteartRetail.com/IProjectService/UpdateProjects" message="tns:IProjectService_UpdateProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ByteartRetail.com/IProjectService/UpdateProjectsResponse" message="tns:IProjectService_UpdateProjects_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ByteartRetail.com/IProjectService/UpdateProjectsFaultDataFault" name="FaultDataFault" message="tns:IProjectService_UpdateProjects_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByKey">
+      <wsdl:input wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByKey" message="tns:IProjectService_GetProjectByKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByKeyResponse" message="tns:IProjectService_GetProjectByKey_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByKeyFaultDataFault" name="FaultDataFault" message="tns:IProjectService_GetProjectByKey_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByProjectNo">
+      <wsdl:input wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByProjectNo" message="tns:IProjectService_GetProjectByProjectNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByProjectNoResponse" message="tns:IProjectService_GetProjectByProjectNo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByProjectNoFaultDataFault" name="FaultDataFault" message="tns:IProjectService_GetProjectByProjectNo_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjects" message="tns:IProjectService_GetProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectsResponse" message="tns:IProjectService_GetProjects_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectsFaultDataFault" name="FaultDataFault" message="tns:IProjectService_GetProjects_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsByWaranteeName">
+      <wsdl:input wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectsByWaranteeName" message="tns:IProjectService_GetProjectsByWaranteeName_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectsByWaranteeNameResponse" message="tns:IProjectService_GetProjectsByWaranteeName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectsByWaranteeNameFaultDataFault" name="FaultDataFault" message="tns:IProjectService_GetProjectsByWaranteeName_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectByContractNo">
+      <wsdl:input wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByContractNo" message="tns:IProjectService_GetProjectByContractNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByContractNoResponse" message="tns:IProjectService_GetProjectByContractNo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectByContractNoFaultDataFault" name="FaultDataFault" message="tns:IProjectService_GetProjectByContractNo_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsWithPagination">
+      <wsdl:input wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectsWithPagination" message="tns:IProjectService_GetProjectsWithPagination_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectsWithPaginationResponse" message="tns:IProjectService_GetProjectsWithPagination_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ByteartRetail.com/IProjectService/GetProjectsWithPaginationFaultDataFault" name="FaultDataFault" message="tns:IProjectService_GetProjectsWithPagination_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

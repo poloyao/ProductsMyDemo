@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="443e2ff2-a28d-4c93-872f-fb5e7ca0638c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.1.201:8000/ProjectService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProjectService.wsdl" MetadataType="Wsdl" ID="f5d5709d-ae00-4a8b-ab5f-90b90c4be7ce" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ProjectService14.xsd" MetadataType="Schema" ID="5cf3131a-387e-4a32-8a71-80d8fa13e805" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd14" />
+    <MetadataFile FileName="ProjectService.xsd" MetadataType="Schema" ID="8d772691-f5a4-4c42-bece-e26883136cc7" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd10" />
+    <MetadataFile FileName="ProjectService.disco" MetadataType="Disco" ID="09e8ee09-463d-459f-917b-aaf4de4f9079" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?disco" />
+    <MetadataFile FileName="ProjectService1.wsdl" MetadataType="Wsdl" ID="a74eae36-14f5-4d05-b6fb-b9533020af71" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?wsdl" />
+    <MetadataFile FileName="ProjectService1.xsd" MetadataType="Schema" ID="6c23bb33-e365-4380-ad89-4c983c24355e" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd13" />
+    <MetadataFile FileName="ProjectService2.xsd" MetadataType="Schema" ID="d3b28b67-b5c3-4fc7-bc7a-639d2ca91351" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd11" />
+    <MetadataFile FileName="ProjectService3.xsd" MetadataType="Schema" ID="aaba3af1-c23e-48ee-ac4d-3a92bd24c1c5" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd8" />
+    <MetadataFile FileName="ProjectService4.xsd" MetadataType="Schema" ID="18862928-aaac-4d34-84b7-c5ed7d3a3991" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd9" />
+    <MetadataFile FileName="ProjectService5.xsd" MetadataType="Schema" ID="ddc803e3-41e4-4807-b92e-752603957a06" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd12" />
+    <MetadataFile FileName="ProjectService6.xsd" MetadataType="Schema" ID="ac1f7ac0-1a58-44a9-8026-7087e59d7bba" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ProjectService7.xsd" MetadataType="Schema" ID="36e847bc-b453-40e1-a961-f68cbf22f093" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ProjectService8.xsd" MetadataType="Schema" ID="cac8a251-5191-4c91-a978-bd68f55be052" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProjectService9.xsd" MetadataType="Schema" ID="8ce17bcf-1bbc-41cc-a606-3e0a31717340" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProjectService10.xsd" MetadataType="Schema" ID="b2a909fe-213e-4722-98fe-7658ee580cc7" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd6" />
+    <MetadataFile FileName="ProjectService11.xsd" MetadataType="Schema" ID="20b9a08d-9b95-421b-ab45-e36a13f845ba" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd7" />
+    <MetadataFile FileName="ProjectService12.xsd" MetadataType="Schema" ID="da364fe8-11e6-4054-a3f3-f4954385cbc9" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ProjectService13.xsd" MetadataType="Schema" ID="1cb6f874-d02d-4f40-8598-b125559dcb97" SourceId="1" SourceUrl="http://192.168.1.201:8000/ProjectService.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -12,7 +12,7 @@
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              x:Class="ProductsMyDemo.Views.Contract"
              mc:Ignorable="d" 
-             d:DesignHeight="1300" d:DesignWidth="600">
+             d:DesignHeight="800" d:DesignWidth="600">
 
     <Grid>
         <dxdo:DockLayoutManager>
@@ -163,6 +163,8 @@
                                         </dxlc:LayoutItem>
                                     </dxlc:LayoutGroup>
                                 </dxlc:LayoutGroup>
+                                
+                                
 
                                 <!--反担保--><!--
                                 <dxlc:LayoutGroup Orientation="Vertical" Style="{StaticResource InnerLayoutGroup}">
@@ -289,6 +291,20 @@
                                 
                             </dxlc:LayoutGroup>
                         </dxlc:LayoutControl>
+                    </dxdo:LayoutPanel>
+                </dxdo:LayoutGroup>
+                
+                <!--追加按钮组-->
+                <dxdo:LayoutGroup>
+                    <dxdo:LayoutPanel MaxHeight="40" ShowBorder="False" ShowCaption="False">
+                        <dxlc:LayoutGroup>
+                            <dxlc:LayoutItem HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <dx:SimpleButton Content="反担保人" Command="{Binding SaveCommand}" ButtonKind="Simple" Glyph="{dx:DXImage Image=BOCustomer_32x32.png}" Click="SimpleButton_Click"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Visibility="Visible" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <dx:SimpleButton Content="债权人" Command="{Binding SaveCommand}" ButtonKind="Simple" Glyph="{dx:DXImage Image=Currency_32x32.png}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
                     </dxdo:LayoutPanel>
                 </dxdo:LayoutGroup>
             </dxdo:LayoutGroup>

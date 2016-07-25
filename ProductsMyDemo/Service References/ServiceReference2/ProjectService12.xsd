@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/ContractDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/ContractDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ContractDataObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GuaranteeAmount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Deposit" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReGuarantee" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Ratio" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ContractNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContractDataObject" nillable="true" type="tns:ContractDataObject" />
+</xs:schema>

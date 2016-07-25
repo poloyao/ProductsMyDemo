@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/CommonCodeDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/CommonCodeDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.201:8000/CommonService.svc?xsd=xsd4" namespace="http://www.ByteartRetail.com/CommonStatusDataObject.xsd" />
+  <xs:complexType name="CommonCodeDataObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://www.ByteartRetail.com/CommonStatusDataObject.xsd" minOccurs="0" name="Category" nillable="true" type="q1:CommonStatusDataObject" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommonCodeDataObject" nillable="true" type="tns:CommonCodeDataObject" />
+</xs:schema>

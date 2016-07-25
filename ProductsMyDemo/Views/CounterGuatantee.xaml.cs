@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DevExpress.Xpf.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace ProductsMyDemo.Views
 {
     /// <summary>
-    /// Contract.xaml 的交互逻辑
+    /// Interaction logic for CounterGuatantee.xaml
     /// </summary>
-    public partial class Contract : UserControl
+    public partial class CounterGuatantee : DXWindow
     {
-        public Contract()
+        public CounterGuatantee()
         {
             InitializeComponent();
-        }
-
-        private void SimpleButton_Click(object sender, RoutedEventArgs e)
-        {
-            CounterGuatantee cg = new CounterGuatantee();
-            cg.ShowDialog();
         }
     }
 }

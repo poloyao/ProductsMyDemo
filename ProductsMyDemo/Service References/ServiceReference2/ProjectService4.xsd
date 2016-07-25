@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/LoanConfirmationStatusDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/LoanConfirmationStatusDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="LoanConfirmationStatusDataObject">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WaitConfirm" />
+      <xs:enumeration value="NoLoan" />
+      <xs:enumeration value="CompleteConfirm" />
+      <xs:enumeration value="PartConfirm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LoanConfirmationStatusDataObject" nillable="true" type="tns:LoanConfirmationStatusDataObject" />
+</xs:schema>

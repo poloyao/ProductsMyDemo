@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/CommonStatusDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/CommonStatusDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="CommonStatusDataObject">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CodeType" />
+      <xs:enumeration value="PayType" />
+      <xs:enumeration value="PayStatus" />
+      <xs:enumeration value="PayOption" />
+      <xs:enumeration value="PayFre" />
+      <xs:enumeration value="BusinessType" />
+      <xs:enumeration value="GuaranteeType" />
+      <xs:enumeration value="Status" />
+      <xs:enumeration value="CreditorType" />
+      <xs:enumeration value="WarranteeType" />
+      <xs:enumeration value="CGManType" />
+      <xs:enumeration value="CGType" />
+      <xs:enumeration value="ContractStatus" />
+      <xs:enumeration value="GoMark" />
+      <xs:enumeration value="BQStatus" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CommonStatusDataObject" nillable="true" type="tns:CommonStatusDataObject" />
+</xs:schema>

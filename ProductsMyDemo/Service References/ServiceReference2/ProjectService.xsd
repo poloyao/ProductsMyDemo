@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/RelieveStatusDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/RelieveStatusDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="RelieveStatusDataObject">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UnRelieve" />
+      <xs:enumeration value="PartRelieve" />
+      <xs:enumeration value="CompleteRelieve" />
+      <xs:enumeration value="SubrogationRelieve" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RelieveStatusDataObject" nillable="true" type="tns:RelieveStatusDataObject" />
+</xs:schema>

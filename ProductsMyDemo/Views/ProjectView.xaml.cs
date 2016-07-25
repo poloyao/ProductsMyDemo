@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,19 +15,18 @@ using System.Windows.Shapes;
 namespace ProductsMyDemo.Views
 {
     /// <summary>
-    /// Contract.xaml 的交互逻辑
+    /// ProjectView.xaml 的交互逻辑
     /// </summary>
-    public partial class Contract : UserControl
+    public partial class ProjectView : UserControl
     {
-        public Contract()
+        public ProjectView()
         {
             InitializeComponent();
         }
 
-        private void SimpleButton_Click(object sender, RoutedEventArgs e)
+        private void TableView_CellValueChanging(object sender, DevExpress.Xpf.Grid.CellValueChangedEventArgs e)
         {
-            CounterGuatantee cg = new CounterGuatantee();
-            cg.ShowDialog();
+            e.Source.PostEditor();
         }
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ByteartRetail.com/LoanRelieveDataObject.xsd" elementFormDefault="qualified" targetNamespace="http://www.ByteartRetail.com/LoanRelieveDataObject.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="LoanRelieveDataObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelieveAmount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RelieveDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoanRelieveDataObject" nillable="true" type="tns:LoanRelieveDataObject" />
+</xs:schema>
