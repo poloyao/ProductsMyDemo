@@ -7,31 +7,25 @@
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:vm="clr-namespace:ProductsMyDemo.VM"
-             DataContext="{dxmvvm:ViewModelSource Type=vm:ProjectVM}"
              xmlns:local="clr-namespace:ProductsMyDemo.Views"
-             xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" x:Class="ProductsMyDemo.Views.ProjectView"
+             xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             DataContext="{dxmvvm:ViewModelSource Type={x:Type vm:ProjectVM}}"
+             x:Class="ProductsMyDemo.Views.ProjectView"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
     <UserControl.Resources>
         <ResourceDictionary>
-            <!--查询器-->
-            <dxg:TableView x:Key="view" ShowSearchPanelMode="Always" AllowPerPixelScrolling="True" CellValueChanging="TableView_CellValueChanging" ShowGroupPanel="False" AutoWidth="True" AllowConditionalFormattingMenu="True"  SearchPanelNullText="请输入查询内容">
-                <dxg:TableView.FormatConditions>
-                    <!--判断列表显示模式-->
-                    <dxg:FormatCondition Expression="[Overdue]" PredefinedFormatName="RedText"/>
-                    <dxg:FormatCondition Expression="(Not [Complete]) And ([Priority]='High')" PredefinedFormatName="BoldText"/>
-                    <dxg:FormatCondition Expression="([Status]='Completed') Or ([Status]='Deferred')">
-                        <dx:Format Foreground="Gray"/>
-                    </dxg:FormatCondition>
-                    <dxg:FormatCondition Expression="[Status]='WaitingOnSomeoneElse'">
-                        <dx:Format Foreground="Orange"/>
-                    </dxg:FormatCondition>
-                    <dxg:FormatCondition PredefinedFormatName="StrikethroughText" Expression="[Status]='Completed'"/>
-                </dxg:TableView.FormatConditions>
-                <dxmvvm:Interaction.Triggers>
-                    <dxmvvm:EventToCommand EventName="RowDoubleClick" Command="{Binding ShowEditTaskWindowCommand}"/>
-                </dxmvvm:Interaction.Triggers>
-            </dxg:TableView>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <!--查询器-->
+            <dxg:TableView x:Key="view" ShowSearchPanelMode="Always" 
+                           AllowPerPixelScrolling="True" 
+                           CellValueChanging="TableView_CellValueChanging" 
+                           ShowGroupPanel="False" 
+                           AutoWidth="True" 
+                           AllowEditing="False"
+                           AllowConditionalFormattingMenu="True"  
+                           SearchPanelNullText="请输入查询内容"/>
 
             <Style x:Key="gridControlMVVMStyle" TargetType="{x:Type dxg:GridControl}">
                 <Setter Property="ItemsSource" Value="{Binding ItemsSource}"/>
@@ -40,23 +34,48 @@
                 <Setter Property="SelectedItem" Value="{Binding SelectedItem, Mode=TwoWay}"/>
                 <Setter Property="FilterString" Value="{Binding FilterString, Mode=TwoWay}"/>
             </Style>
-            
-            
+                </ResourceDictionary>
+                <ResourceDictionary Source="/ProductsMyDemo;component/ViewResources/ProjectRowTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <dx:WcfInstantFeedbackDataSource Name="wcfInstantSource" DataServiceContext="{Binding}" Query="{Binding}"></dx:WcfInstantFeedbackDataSource>
+        <!--<dx:WcfInstantFeedbackDataSource x:Name="wcfInstantSource" KeyExpression="ID" DataServiceContext="{Binding WcfSCService2}" Query="{Binding Path=}"   />-->
+        <dx:PLinqInstantFeedbackDataSource Name="plingSource"  ListSource="{Binding OrderDataList,Mode=TwoWay}" DismissEnumerable="plingSource_DismissEnumerable" DataContextChanged="plingSource_DataContextChanged" GetEnumerable="plingSource_GetEnumerable"/>
         <dxdo:DockLayoutManager>
             <dxdo:LayoutGroup>
-                <dxdo:LayoutPanel AllowClose="False" AllowFloat="False" AllowHide="False" ShowCaption="False" ShowBorder="False" ShowCloseButton="False">
+                <dxdo:LayoutPanel  AllowClose="False" AllowFloat="False" AllowHide="False" ShowCaption="False" ShowBorder="False" ShowCloseButton="False">
                     <Grid>
-                        <dxg:GridControl x:Name="grid" Grid.Row="1" ItemsSource="{Binding ProjectList}" Style="{StaticResource gridControlMVVMStyle}" View="{StaticResource view}" AutoGenerateColumns="AddNew" >
+                        <dxg:GridControl x:Name="grid" Grid.Row="1" 
+                                         MouseDoubleClick="grid_MouseDoubleClick"
+                                         LayoutUpdated="grid_LayoutUpdated" 
+                                         ItemsSource="{Binding ProjectList}" 
+                                         SelectedItem="{Binding SelectItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                         Style="{StaticResource gridControlMVVMStyle}"  AutoGenerateColumns="None" >
+                            <!--<dxmvvm:Interaction.Behaviors>
+                                <dxmvvm:EventToCommand Command="{Binding DoubleProjectCommand}" CommandParameter="{Binding SelectedItem.ID, ElementName=grid}" EventName="MouseDoubleClick"/>
+                            </dxmvvm:Interaction.Behaviors>-->
+                            <dxg:GridControl.View>
+                                <dxg:TableView AutoWidth="True"  
+                                               DataRowTemplate="{DynamicResource expandableRowDetailTemplate}"
+                                               UseEvenRowBackground="True" 
+                                               ShowGroupPanel="False" 
+                                               AllowPerPixelScrolling="True" 
+                                               AllowEditing="False" 
+                                               AllowCascadeUpdate="True">
+                                    <dxg:TableView.UseLightweightTemplates>
+                                        <dxg:UseLightweightTemplates>None</dxg:UseLightweightTemplates>
+                                    </dxg:TableView.UseLightweightTemplates>
+                                </dxg:TableView>
+
+                            </dxg:GridControl.View>
                             <dxg:GridControl.Columns>
-                                <dxg:GridColumn FieldName="ID" Header="ID" />
-                                <dxg:GridColumn FieldName="ActorsName" Header="ID" />
-                                <dxg:GridColumn FieldName="ss" Header="ID" />
-                                <dxg:GridColumn FieldName="ss" Header="ID" />
-                                <dxg:GridColumn FieldName="ss" Header="ID" />
+                                <dxg:GridColumn FieldName="ProjectNo" Header="项目号"/>
+                                <dxg:GridColumn FieldName="Warantee.ID" Header="被担保人"/>
+                                <dxg:GridColumn FieldName="Contract.GuaranteeAmount" Header="担保金额"/>
+                                <dxg:GridColumn FieldName="Contract.ContractNo" Header="合同编号"/>
+                                <dxg:GridColumn FieldName="Contract.StartDate" Header="起始时间"/>
+                                <dxg:GridColumn FieldName="Contract.EndDate" Header="结束时间"/>
                             </dxg:GridControl.Columns>
                             <dxg:GridControl.GroupSummary>
                                 <dxg:GridSummaryItem SummaryType="Count"/>
@@ -68,8 +87,52 @@
                         </dxg:GridControl>
                     </Grid>
                 </dxdo:LayoutPanel>
-                <dxdo:LayoutPanel ItemWidth="Auto" AllowClose="False" ShowCaption="False">
-                    <Label>列表选中后的描述信息</Label>
+                <dxdo:LayoutPanel ShowCaption="False"
+                                  ItemWidth="Auto" MaxWidth="300" MinWidth="100"  
+                                  AllowClose="False" >
+
+                    <dxlc:LayoutControl   Orientation="Vertical">
+                        <dxlc:LayoutGroup>
+                            <dxlc:LayoutGroup x:Name="layoutGroup" Orientation="Vertical" VerticalAlignment="Top">
+                                <dxlc:LayoutItem IsRequired="True" Label="项目号:" LabelPosition="Top">
+                                    <dxe:TextEdit  Text="{Binding SelectedItem.ID, ElementName=grid}"/>
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem IsRequired="True" Label="被担保人:" LabelPosition="Top">
+                                    <dxe:TextEdit  Text="{Binding SelectedItem.Warantee.ID, ElementName=grid}"/>
+                                </dxlc:LayoutItem>
+                            </dxlc:LayoutGroup>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup Header="合同信息" Orientation="Vertical" UseLayoutRounding="True" View="GroupBox">
+                            <dxlc:LayoutItem Label="合同编号" LabelPosition="Top">
+                                <dxe:TextEdit Text="{Binding SelectedItem.Contract.ContractNo, ElementName=grid}" />
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="担保金额" LabelPosition="Top">
+                                <dxe:TextEdit Text="{Binding SelectedItem.Contract.GuaranteeAmount, ElementName=grid}" />
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="起始时间" LabelPosition="Top">
+                                <dxe:TextEdit  Text="{Binding SelectedItem.Contract.StartDate, ElementName=grid}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="结束时间" LabelPosition="Top">
+                                <dxe:TextEdit Text="{Binding SelectedItem.Contract.EndDate, ElementName=grid}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="存出保证金比例" LabelPosition="Top">
+                                <dxe:TextEdit Text="{Binding SelectedItem.Contract.Deposit, ElementName=grid}" />
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="约定再担保补偿比例" LabelPosition="Top">
+                                <dxe:TextEdit Text="{Binding SelectedItem.Contract.ReGuarantee, ElementName=grid}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="费率" LabelPosition="Top">
+                                <dxe:TextEdit Text="{Binding SelectedItem.Contract.Ratio, ElementName=grid}"/>
+                            </dxlc:LayoutItem>
+
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup Header="被担保人信息" Orientation="Vertical" UseLayoutRounding="True" View="GroupBox">
+                            <dxlc:LayoutItem Label="被担保人" LabelPosition="Top">
+                                <dxe:TextEdit />
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutControl>
+
                 </dxdo:LayoutPanel>
             </dxdo:LayoutGroup>
         </dxdo:DockLayoutManager>

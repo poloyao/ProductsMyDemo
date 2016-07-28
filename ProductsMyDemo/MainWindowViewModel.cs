@@ -140,6 +140,9 @@ namespace ProductsMyDemo
                 Title = _title;
             }
             public string Type { get; private set; }
+            /// <summary>
+            /// 是否打开，与界面进行绑定，用后置为false
+            /// </summary>
             public virtual bool IsSelected { get; set; }
             public string Title { get; private set; }
             public virtual Uri Icon { get; set; }
@@ -155,15 +158,11 @@ namespace ProductsMyDemo
             /// <param name="parameter"></param>
             public void Show(object parameter = null)
             {
-                try
+                if (IsSelected)
                 {
                     INavigationService navigationService = parent.ServiceContainer.GetRequiredService<INavigationService>();
                     navigationService.Navigate(Type, parameter, parent);
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("error!~");
+                    IsSelected = false;
                 }
 
             }

@@ -11,17 +11,29 @@ namespace ProductsMyDemo.VM
     [POCOViewModel]
     public class ContractVM
     {
-        protected ContractVM()
-        {
-            //部分初始化
-            CGAddPanel = 1;
-        }
+        //protected ContractVM()
+        //{
+        //    //部分初始化
+        //    CGAddPanel = 1;
+        //}
 
 
-        public static ContractVM Create()
+        //public static ContractVM Create()
+        //{
+        //    return ViewModelSource.Create(() => new ContractVM());
+        //}
+
+
+        public ContractVM()
         {
-            return ViewModelSource.Create(() => new ContractVM());
+            var ass = "";
         }
+
+        public ContractVM(string ID)
+        {
+            var asd = "";
+        }
+        
 
         /// <summary>
         /// 反担保添加面板

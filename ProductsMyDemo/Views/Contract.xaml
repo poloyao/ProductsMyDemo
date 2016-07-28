@@ -10,6 +10,8 @@
              xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"    
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:vm="clr-namespace:ProductsMyDemo.VM"
+             DataContext="{dxmvvm:ViewModelSource Type=vm:ContractVM}"
              x:Class="ProductsMyDemo.Views.Contract"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="600">

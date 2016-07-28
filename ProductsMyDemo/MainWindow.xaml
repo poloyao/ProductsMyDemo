@@ -14,6 +14,7 @@
         xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" x:Class="ProductsMyDemo.MainWindow"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
+        xmlns:converter="clr-namespace:ProductsMyDemo.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800" WindowStartupLocation="CenterScreen">
     <dxr:DXRibbonWindow.Resources>
@@ -28,7 +29,7 @@
         <sys:Double x:Key="{dxrt:RibbonThemeKey ResourceKey=ColumnIndent, ThemeName=Office2013}">5</sys:Double>
         <sys:Double x:Key="{dxrt:RibbonThemeKey ResourceKey=ColumnIndent, ThemeName=Office2013LightGray}">5</sys:Double>
         <sys:Double x:Key="{dxrt:RibbonThemeKey ResourceKey=ColumnIndent, ThemeName=Office2013DarkGray}">5</sys:Double>
-
+        <converter:NavbarItemCommand x:Key="navbarConverter" />
     </dxr:DXRibbonWindow.Resources>
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:CurrentWindowService />
@@ -44,6 +45,7 @@
             <dxdo:LayoutGroup>
                 <dxdo:LayoutPanel Caption="菜单" ShowCaption="False" Name="layoutPanel" ItemWidth="Auto" AllowClose="False"  MaxWidth="100" >
                     <dxn:NavBarControl SelectedItem="{Binding SelectedModuleInfo, Mode=OneWayToSource}" ItemsSource="{Binding ModuleGroups}">
+                        <!--预加载-->
                         <dxmvvm:Interaction.Triggers>
                             <dxmvvm:EventToCommand EventName="Loaded" Command="{Binding OnModulesLoadedCommand}" />
                         </dxmvvm:Interaction.Triggers>
@@ -57,7 +59,8 @@
                                             <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                             <Setter Property="Content" Value="{Binding Path=Title}" />
                                             <Setter Property="ImageSource" Value="{Binding Path=Icon}" />
-                                            <Setter Property="Command" Value="{Binding Path=ShowCommand}" />
+                                            <Setter Property="Command" Value="{Binding Path=ShowCommand}"/>
+                                            <Setter Property="CommandParameter" Value="{Binding Path=Type}" />
                                             <Setter Property="ImageSettings">
                                                 <Setter.Value>
                                                     <dxn:ImageSettings Width="32" Height="32" Stretch="Uniform" StretchDirection="Both" />
@@ -96,6 +99,7 @@
                         </dxwui:NavigationFrame.Resources>
                         <dxmvvm:Interaction.Behaviors>
                             <dxwuin:FrameNavigationService Frame="{Binding ElementName=documentFrame}" />
+                            <!--数据加载loading-->
                             <dx:DXSplashScreenService SplashScreenType="{Binding SplashScreenType}" />
                         </dxmvvm:Interaction.Behaviors>
                     </dxwui:NavigationFrame>
